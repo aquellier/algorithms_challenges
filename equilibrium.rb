@@ -1,17 +1,18 @@
 require 'byebug'
 
 def solution(array)
-  minimum = ((array[0] + array[1]) - (array[2...array.length].reduce(:+))).abs
+  left_sum = array[0]
+  right_sum = array[1...array.length].reduce(:+)
+  minimum = (left_sum - right_sum).abs
   index_for_minimum = 1
-  (3...array.length).each do |index|
-    array_left = array[0...index]
-    array_right = array[index...array.length]
-    substraction = (array_left.reduce(:+) - array_right.reduce(:+)).abs
+  (2...array.length).each do |index|
+    left_sum = left_sum + array[index - 1]
+    right_sum = right_sum - array[index - 1]
+    p substraction = (left_sum - right_sum).abs
     minimum = substraction if substraction < minimum
+    index_for_minimum = index if substraction < minimum
   end
   minimum
 end
 
 array = [1, -4, 6, 7, 17, 2, 8, -12, 4]
-
-p solution(array)
