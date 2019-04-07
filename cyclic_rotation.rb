@@ -1,13 +1,15 @@
-def cyclic_roration(array, times)
-  rotated_array = array.dup
+example = [1, 6, 4, 3, 8, 3]
+
+def cyclic_with_modulo(array, times)
+  rotated_array = Array.new(array.length)
   (0...array.length).each do |index|
     rotated_array[(index + times) % array.length] = array[index]
   end
   rotated_array
 end
 
-def cyclic(array, times)
-  rotated_array = array.dup
+def cyclic_with_if(array, times)
+  rotated_array = Array.new(array.length)
   (0...array.length).each do |index|
     if index + times < array.length
       rotated_array[(index + times)] = array[index]
@@ -18,5 +20,5 @@ def cyclic(array, times)
   rotated_array
 end
 
-p cyclic_roration([3, 4, 8, 2, 1, 5, 8, 12], 3)
-p cyclic([3, 4, 8, 2, 1, 5, 8, 12], 3)
+p cyclic_with_modulo(example, 14)
+p cyclic_with_if(example, 14)
