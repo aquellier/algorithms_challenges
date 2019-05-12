@@ -7,3 +7,5 @@ def ASCIIConversion(str)
   end
   ascii.join(' ')
 end
+
+p ASCIIConversion('hello')
